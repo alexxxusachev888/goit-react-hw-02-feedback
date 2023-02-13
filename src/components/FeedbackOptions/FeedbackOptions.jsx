@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {FeedBackList, FeedBackListItem, FeedBackOption} from './FeedbackOptions.styled';
+import { FeedBackList, FeedBackListItem, FeedBackOption } from './FeedbackOptions.styled';
 
 export function Feedback({handleGoodFeed, handleNeutralFeed, handleBadFeed}) {
     return (

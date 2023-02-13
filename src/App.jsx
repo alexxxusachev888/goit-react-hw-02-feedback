@@ -34,8 +34,7 @@ export default class App extends Component {
           handleBadFeed = {this.handleBadFeed}
         /></Section>    
       
-      <Section>
-        
+      <Section title={'Statistics'}>
         { totalFeeds ? 
         <Statistics 
           good = {good} 
@@ -43,7 +42,9 @@ export default class App extends Component {
           bad= {bad}
           totalFeeds = {totalFeeds}
           positiveFeeds = {positiveFeeds}
-        /> : <Notification/>}
+        /> :
+         <Notification/>}
+
       </Section>
 
       </Container>)
