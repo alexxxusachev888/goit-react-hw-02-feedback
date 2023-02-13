@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+
 import { Container } from "App.styled";
-
-import { Feedback } from './components/FeedBackForm/FeedBackForm';
+import { Section } from './components/Section/Section';
+import { Feedback } from './components/FeedbackOptions/FeedbackOptions';
 import { Statistics } from './components/Statistics/Statistics';
+import { Notification } from './components/Notification/Notification';
 
-class App extends Component {
+export default class App extends Component {
 
   state = {
     good: 0,
     neutral: 0,
-    bad: 0
+    bad: 0,
   }
 
   handleGoodFeed = () => {this.setState(prevState => ({good: prevState.good + 1}))};
@@ -25,22 +27,26 @@ class App extends Component {
 
     return (<Container> 
 
-      <Feedback 
-        handleGoodFeed = {this.handleGoodFeed} 
-        handleNeutralFeed = {this.handleNeutralFeed}
-        handleBadFeed = {this.handleBadFeed}
-      />
+      <Section title={'Please leave feedback'}>
+        <Feedback 
+          handleGoodFeed = {this.handleGoodFeed} 
+          handleNeutralFeed = {this.handleNeutralFeed}
+          handleBadFeed = {this.handleBadFeed}
+        /></Section>    
       
-      <Statistics 
-        good = {good} 
-        neutral = {neutral}
-        bad= {bad}
-        totalFeeds = {totalFeeds}
-        positiveFeeds = {positiveFeeds}
-      />
+      <Section>
+        
+        { totalFeeds ? 
+        <Statistics 
+          good = {good} 
+          neutral = {neutral}
+          bad= {bad}
+          totalFeeds = {totalFeeds}
+          positiveFeeds = {positiveFeeds}
+        /> : <Notification/>}
+      </Section>
 
       </Container>)
   }
 };
 
-export default App

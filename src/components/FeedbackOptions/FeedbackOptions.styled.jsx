@@ -1,11 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Section = styled.section`
-    display: block; 
-`
-export const Header = styled.h2`
-    display: block; 
-`
+
 export const FeedBackList = styled.ul`
     display: flex;
     gap: 20px;
