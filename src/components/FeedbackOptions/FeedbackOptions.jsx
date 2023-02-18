@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { FeedBackList, FeedBackListItem, FeedBackOption } from './FeedbackOptions.styled';
 
-export function Feedback({options, onLeaveFeedback}) {
+export function FeedbackOptions({options, onLeaveFeedback}) {
     return (
         <FeedBackList>
             {options.map((item, idx) => {
@@ -13,7 +13,7 @@ export function Feedback({options, onLeaveFeedback}) {
           )
 }
 
-Feedback.propTypes = {
+FeedbackOptions.propTypes = {
     options: PropTypes.array.isRequired, 
     onLeaveFeedback: PropTypes.func.isRequired,
 }

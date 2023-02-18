@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Container } from "App.styled";
 import { Section } from './components/Section/Section';
-import { Feedback } from './components/FeedbackOptions/FeedbackOptions';
+import { FeedbackOptions } from './components/FeedbackOptions/FeedbackOptions';
 import { Statistics } from './components/Statistics/Statistics';
 import { Notification } from './components/Notification/Notification';
 
@@ -30,7 +30,7 @@ export default class App extends Component {
     return (<Container> 
 
       <Section title={'Please leave feedback'}>
-        <Feedback options={Object.keys(this.state)} onLeaveFeedback={this.handleFeedBack} />
+        <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.handleFeedBack} />
         </Section>    
       
       <Section title={'Statistics'}>
