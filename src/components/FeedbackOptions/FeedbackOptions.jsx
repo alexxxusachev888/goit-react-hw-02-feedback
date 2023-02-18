@@ -1,24 +1,19 @@
 import PropTypes from 'prop-types';
 import { FeedBackList, FeedBackListItem, FeedBackOption } from './FeedbackOptions.styled';
 
-export function Feedback({handleGoodFeed, handleNeutralFeed, handleBadFeed}) {
+export function Feedback({options, onLeaveFeedback}) {
     return (
-            <FeedBackList>
-                <FeedBackListItem>
-                    <FeedBackOption onClick = {()=> handleGoodFeed()}>Good</FeedBackOption>
-                    </FeedBackListItem>
-                <FeedBackListItem>
-                    <FeedBackOption onClick = {()=> handleNeutralFeed()}>Neutral</FeedBackOption>
-                    </FeedBackListItem>
-                <FeedBackListItem>
-                    <FeedBackOption onClick = {()=> handleBadFeed()}>Bad</FeedBackOption>
-                    </FeedBackListItem>
-            </FeedBackList>
+        <FeedBackList>
+            {options.map((item, idx) => {
+                return ( <FeedBackListItem key={idx}>
+                            <FeedBackOption name={item} onClick={(evt)=>onLeaveFeedback(evt)} type="button">{item}</FeedBackOption>
+                        </FeedBackListItem> )
+            })}
+        </FeedBackList>
           )
 }
 
 Feedback.propTypes = {
-    handleGoodFeed: PropTypes.func.isRequired, 
-    handleNeutralFeed: PropTypes.func.isRequired,
-    handleBadFeed: PropTypes.func.isRequired,
+    options: PropTypes.array.isRequired, 
+    onLeaveFeedback: PropTypes.func.isRequired,
 }

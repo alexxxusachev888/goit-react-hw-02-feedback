@@ -14,9 +14,11 @@ export default class App extends Component {
     bad: 0,
   }
 
-  handleGoodFeed = () => {this.setState(prevState => ({good: prevState.good + 1}))};
-  handleNeutralFeed = () => {this.setState(prevState => ({neutral: prevState.neutral + 1}))};
-  handleBadFeed = () => {this.setState(prevState => ({bad: prevState.bad + 1}))};
+  handleFeedBack = (evt) => {
+    const {name} = evt.target;
+    this.setState(prevState => ({[name]: prevState[name] + 1 }))
+  }
+
   countTotalFeedback = (gd, ntr, bd) => gd + ntr + bd;
   countPositiveFeedbackPercentage = (total, good) => total ? `${(Math.ceil((good/total) * 100))}%` : `0%`;
  
@@ -28,11 +30,8 @@ export default class App extends Component {
     return (<Container> 
 
       <Section title={'Please leave feedback'}>
-        <Feedback 
-          handleGoodFeed = {this.handleGoodFeed} 
-          handleNeutralFeed = {this.handleNeutralFeed}
-          handleBadFeed = {this.handleBadFeed}
-        /></Section>    
+        <Feedback options={Object.keys(this.state)} onLeaveFeedback={this.handleFeedBack} />
+        </Section>    
       
       <Section title={'Statistics'}>
         { totalFeeds ? 
